@@ -20,7 +20,8 @@
   },
   "scripts": {
     "dev": "ts-node-dev --ignore-watch node_modules src/app.ts",
-    "typeorm": "typeorm-ts-node-commonjs"
+    "typeorm": "typeorm-ts-node-commonjs",
+    "db:seed": "ts-node src/scripts/seed.ts"
   },
   "dependencies": {
     "axios": "^1.11.0",
