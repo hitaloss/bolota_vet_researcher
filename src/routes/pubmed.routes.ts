@@ -6,7 +6,7 @@ import authMiddleware from "../middlewares/auth.middleware";
 const router = Router();
 
 export function pubmedRoutes() {
-  router.get("", authMiddleware, searchPubmedHandlerController);
+  router.get("", searchPubmedHandlerController);
   return router;
 }
 
