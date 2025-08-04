@@ -20,6 +20,11 @@ async function sessionService({
   username,
   password,
 }: ISessionCreate): Promise<string> {
+  console.log(`[ULTIMATE DEBUG] Senha recebida (entre aspas): '${password}'`);
+  console.log(
+    `[ULTIMATE DEBUG] Comprimento da senha recebida: ${password.length}`
+  );
+
   try {
     const queryText = 'SELECT * FROM "User" WHERE username = $1';
     const result = await pool.query<IUser>(queryText, [username]);
@@ -27,7 +32,9 @@ async function sessionService({
       throw new AppError(403, "Invalid username or password.");
     }
     const user = result.rows[0];
+
     const passwordMatch = await compare(password, user.password);
+
     if (!passwordMatch) {
       throw new AppError(403, "Invalid username or password.");
     }
